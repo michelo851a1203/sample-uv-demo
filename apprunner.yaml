@@ -1,0 +1,17 @@
+version: 1.0
+runtime: python3
+build:
+  commands:
+    # pre-build is OPTIONAL and often omitted for simple deployments
+    # pre-build: 
+    #   - echo "Starting pre-build tasks..." 
+    
+    build:
+      # This is where you install Python dependencies
+      - pip install -r requirements.txt 
+
+run:
+  # This is the command that starts your web application
+  command: python app.py 
+  network:
+    port: 8080
