@@ -6,12 +6,13 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 @asynccontextmanager
-async def life_span(_: FastAPI):
+async def lifespan(_: FastAPI):
     logger.info("FastAPI application starting on port 8080...")
     yield
+    logger.info("FastAPI application is down...")
 
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
 @app.get("/")
 def root():
