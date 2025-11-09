@@ -3,9 +3,13 @@ runtime: python311
 build:
   commands:
     build:
-      - echo "build application"
+    - pip3 install pyenv
+    - pyenv install
 run:
+  runtime-version: 3.11.9
   pre-run:
+    - pip3 install pyenv
+    - pyenv install
     - pip3 install -r requirements.txt
   command: uvicorn main:app --host 0.0.0.0 --port 8080
   network:
