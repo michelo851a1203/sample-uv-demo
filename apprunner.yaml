@@ -2,16 +2,16 @@ version: 1.0
 runtime: python311
 build:
   commands:
-    # pre-build is OPTIONAL and often omitted for simple deployments
-    # pre-build: 
-    #   - echo "Starting pre-build tasks..." 
-    
     build:
-      # This is where you install Python dependencies
-      - pip install -r requirements.txt 
-
+      - echo "Installing dependencies"
+      - pip install -r requirements.txt
 run:
-  # This is the command that starts your web application
-  command: python main.py
+  runtime-version: 3.11
+  command: uvicorn main:app --host 0.0.0.0 --port 8080
   network:
     port: 8080
+    env: PORT
+  env:
+    - name: PORT
+      value: "8080"
+
