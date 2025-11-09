@@ -1,5 +1,5 @@
 version: 1.0
-runtime: python3
+runtime: python311
 build:
   commands:
     # pre-build is OPTIONAL and often omitted for simple deployments
@@ -12,6 +12,6 @@ build:
 
 run:
   # This is the command that starts your web application
-  command: python app.py 
+  command: python main.py
   network:
     port: 8080
